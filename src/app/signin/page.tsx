@@ -3,9 +3,15 @@
 import React, { useState } from "react";
 import CustomInput from "../component/CustomInput";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { FormValues } from "../types/generalTypes";
 import Link from "next/link";
+<<<<<<< HEAD
 import AuthLayout from "../component/AuthLayout";
+=======
+import { useMutation } from "@tanstack/react-query";
+import api from "../lib/axios";
+import { toast } from "react-toastify";
+import CustomButton from "../component/CustomButton";
+>>>>>>> b4eda4abc03267b9bda3abf23da7f8363440a915
 
 //const SignIn: React.FC = () => {
 //const [email, setEmail] = useState('');
@@ -22,24 +28,37 @@ import AuthLayout from "../component/AuthLayout";
 //const isFormFilled = email !== '' && password !== '';
 
 const SignIn = () => {
-  const { handleSubmit, control } = useForm<FormValues>();
+  const { handleSubmit, control } = useForm();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+  const signInMutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const response = await api.post("Login", data);
+      return response;
+    },
+    onSuccess: (data) => {
+      if (data?.status === 200) {
+        toast("Logged in sucessfully");
+      }
+    },
+    onError: (error: any) => {
+      console.log(error);
+    },
+  });
+
+  const onSubmit: any = (data: any) => {
+    const formData: any = {
+      email: "duvotes@mailinator.com",
+      password: "Password1@",
+    };
+    signInMutation.mutate(formData);
+
+    // cancellationToken: {
+    //   waitHandle: {
+    //     handle: {},
+    //     safeWaitHandle: {},
+    //   },
+    // },
   };
-
-  //const [email, setEmail] = useState('');
-  //const [password, setPassword] = useState('');
-
-  //const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //setEmail(e.target.value);
-  // };
-
-  //const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  // setPassword(e.target.value);
-  //};
-
-  //const isFormFilled = email !== '' && password !== '';
 
   return (
     <AuthLayout
@@ -63,7 +82,7 @@ const SignIn = () => {
             name="email"
             type="email"
             control={control}
-            rules={{ required: "Email is required" }}
+            // rules={{ required: "Email is required" }}
           />
 
           <CustomInput
@@ -71,27 +90,37 @@ const SignIn = () => {
             name="password"
             type="password"
             control={control}
-            rules={{ required: "Password is required" }}
-            ifPassword
+            // rules={{ required: "Password is required" }}
           />
 
           <Link href="/forgotPassword">
-            <p className="font-bold text-sm ml-72">Forgot Password?</p>
+            <p className="font-bold text-sm ml-72 pb-3">Forgot Password?</p>
           </Link>
 
-          <button
+          <CustomButton
             type="submit"
             className={`mt-8 px-32 py-4 rounded-2xl w-full text-white ${
               true ? "bg-primary" : "bg-customgreen"
             }`}
-            //disabled={!isFormFilled}
+            disabled={signInMutation.isPending}
+            loading={signInMutation.isPending}
           >
             Sign In
+<<<<<<< HEAD
           </button>
           <p className="flex justify-center mt-5 text-sm">
             Don't have an account?{" "}
             <Link href="/signup"><span className="font-bold text-primary cursor-pointer">Sign Up</span></Link>
           </p>
+=======
+          </CustomButton>
+          <Link href="signup">
+            <p className="flex justify-center mt-5 text-sm">
+              Don't have an account?{" "}
+              <span className="font-bold text-primary">Sign Up</span>
+            </p>
+          </Link>
+>>>>>>> b4eda4abc03267b9bda3abf23da7f8363440a915
         </form>
       </div>
     </AuthLayout>
