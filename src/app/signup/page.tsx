@@ -5,84 +5,70 @@ import CustomInput from "../component/CustomInput";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormValues } from "../types/generalTypes";
-import { useMutation } from "@tanstack/react-query";
-import api from "../lib/axios";
 import Link from "next/link";
+import AuthLayout from "../component/AuthLayout";
 
-const Signup = () => {
-  const { handleSubmit, control } = useForm<FormValues>();
+//const SignIn: React.FC = () => {
+//const [email, setEmail] = useState('');
+//const [password, setPassword] = useState('');
 
-  const signUpMutation = useMutation({
-    mutationFn: async (data: FormData) => {
-      const response = await api.post("Register", data);
-      return response;
-    },
-    onSuccess: (data) => {
+//const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//setEmail(e.target.value);
+//};
+
+//const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//setPassword(e.target.value);
+//};
+
+//const isFormFilled = email !== '' && password !== '';
+
+const SignIn = () => {
+    const { handleSubmit, control } = useForm<FormValues>();
+
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
       console.log(data);
-      // Toast.show(data?.data?.data?.message, {
-      //   type: "success",
-      //   placement: "top",
-      // });
-      // router.navigate("/login");
-    },
-    onError: (error: any) => {
-      console.log(error);
-      // Toast.show(error?.response?.data?.error, {
-      //   type: "error",
-      //   placement: "top",
-      // });
-    },
-  });
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    signUpMutation.mutate(data);
-  };
+    };  
 
   //const [email, setEmail] = useState('');
   //const [password, setPassword] = useState('');
 
   //const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //setEmail(e.target.value);
-  // };
+    //setEmail(e.target.value);
+ // };
 
   //const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  // setPassword(e.target.value);
+   // setPassword(e.target.value);
   //};
 
   //const isFormFilled = email !== '' && password !== '';
 
   return (
-    <div className="flex justify-center gap-16 py-10">
-      <div
-        className="w-1/3 min-h-full bg-cover bg-center relative rounded-3xl hidden lg:block"
-        style={{ backgroundImage: "url('/signup-Banner.svg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-primary bg-opacity-75 rounded-3xl">
-          <div className="mt-6 ml-7 pb-56">
-            <Image src="logo.svg" alt="logo" width={70} height={70} />
-          </div>
-          <h1 className="font-extrabold text-3xl px-4 mt-96 ">
-            Empowering Nigerians with information and fostering citizen
-            participation in governance.
-          </h1>
-        </div>
-      </div>
+    <AuthLayout
+      header="Empowering Nigerians with information fostering citizenship participation in governance" 
+      text="" 
+      img="logo.svg" 
+      banner="Signup-Banner.svg"
+      headerMarginTop="35rem">
 
       <div className="mb-24 md:mx-10 mx-6 w-96">
         <h1 className="font-bold text-4xl mb-2">Let's get started</h1>
-        <p className="mb-9">Kindly fill in the required details below</p>
+        <p className="mb-9">
+          Kindly fill in the required details below
+        </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <CustomInput
+        <CustomInput
             label="First name"
-            name="firstName"
+            name="fName"
+            type="name"
             control={control}
             rules={{ required: "First name is required" }}
           />
 
           <CustomInput
             label="Last name"
-            name="lastName"
+            name="lName"
+            type="name"
             control={control}
             rules={{ required: "Last name is required" }}
           />
@@ -95,65 +81,46 @@ const Signup = () => {
             rules={{ required: "Email is required" }}
           />
 
-          {/* <CustomInput
-            label="State of Residence"
-            name="sor"
+          <CustomInput
+            label="State Of Residence"
+            name="SOR"
+            type="name"
             control={control}
-            rules={{ required: "State of Residience is required" }}
-          /> */}
+            rules={{ required: "State of residence is required" }}
+          />
 
           <CustomInput
             label="Password"
             name="password"
-            control={control}
             type="password"
+            control={control}
             rules={{ required: "Password is required" }}
           />
 
           <CustomInput
             label="Confirm Password"
-            name="confirmPassword"
-            control={control}
+            name="cPassword"
             type="password"
-            rules={{ required: "Confirm password" }}
+            control={control}
+            rules={{ required: "Please confirm your password" }}
           />
 
           <button
             type="submit"
-            className={`mt-8 px-32 py-4 rounded-2xl w-full text-white ${
-              true ? "bg-primary" : "bg-customgreen"
-            }`}
+            className={`mt-8 px-32 py-4 rounded-2xl w-full text-white ${true
+              ? 'bg-primary' : 'bg-customgreen'}`}
             //disabled={!isFormFilled}
           >
-            Sign In
+            Sign Up
           </button>
-
-          <Link href="/signin">
-            <p className="flex justify-center mt-5 text-sm">
-              Already have an account?{" "}
-              <span className="font-bold text-primary">Sign In</span>
-            </p>
-          </Link>
+          <p className="flex justify-center mt-5 text-sm">
+            Already have an account?{" "}
+            <Link href="/signin"> <span className="font-bold text-primary">Sign In</span> </Link>
+          </p>
         </form>
       </div>
-    </div>
+    </AuthLayout>
   );
 };
 
-export default Signup;
-
-// {
-//   "firstName": "string",
-//   "lastName": "string",
-//   "email": "user@example.com",
-//   "password": "z<>|&8\\s3nl-s,G'$f{ZkLy=::sG3eO9|Rok*es",
-//   "confirmPassword": "string",
-//   "bio": "string",
-//   "phoneNumber": "string",
-//   "socialMediaLink": "string",
-//   "image": "string",
-//   "otherInformation": "string",
-//   "userId": "string",
-//   "organizationName": "string",
-//   "isOrganization": true
-// }
+export default SignIn;
