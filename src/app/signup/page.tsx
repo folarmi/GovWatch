@@ -1,10 +1,10 @@
+
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useState } from "react";
 import CustomInput from "../component/CustomInput";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
-<<<<<<< HEAD
 import { FormValues } from "../types/generalTypes";
 import Link from "next/link";
 import AuthLayout from "../component/AuthLayout";
@@ -43,7 +43,6 @@ const SignIn = () => {
 
   //const isFormFilled = email !== '' && password !== '';
 
-=======
 import { RegisterFormValues } from "../types/generalTypes";
 import { useMutation } from "@tanstack/react-query";
 import api from "../lib/axios";
@@ -80,7 +79,6 @@ const Signup = () => {
     signUpMutation.mutate(data);
   };
 
->>>>>>> b4eda4abc03267b9bda3abf23da7f8363440a915
   return (
     <AuthLayout
       header="Empowering Nigerians with information fostering citizenship participation in governance" 
@@ -121,11 +119,9 @@ const Signup = () => {
           />
 
           <CustomInput
-<<<<<<< HEAD
             label="State Of Residence"
             name="SOR"
             type="name"
-=======
             label="Country"
             name="country"
             type="text"
@@ -136,7 +132,6 @@ const Signup = () => {
           {/* <CustomInput
             label="State of Residence"
             name="sor"
->>>>>>> b4eda4abc03267b9bda3abf23da7f8363440a915
             control={control}
             rules={{ required: "State of residence is required" }}
           />
@@ -159,7 +154,6 @@ const Signup = () => {
 
           <CustomButton
             type="submit"
-<<<<<<< HEAD
             className={`mt-8 px-32 py-4 rounded-2xl w-full text-white ${true
               ? 'bg-primary' : 'bg-customgreen'}`}
             //disabled={!isFormFilled}
@@ -170,7 +164,6 @@ const Signup = () => {
             Already have an account?{" "}
             <Link href="/signin"> <span className="font-bold text-primary">Sign In</span> </Link>
           </p>
-=======
             className={`mt-8 px-32 py-4 rounded-2xl w-full text-white ${
               true ? "bg-primary" : "bg-customgreen"
             }`}
@@ -186,7 +179,6 @@ const Signup = () => {
               <span className="font-bold text-primary"> Sign In</span>
             </p>
           </Link>
->>>>>>> b4eda4abc03267b9bda3abf23da7f8363440a915
         </form>
       </div>
     </AuthLayout>
