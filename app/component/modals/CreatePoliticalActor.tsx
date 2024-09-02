@@ -137,7 +137,7 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
             checked={isInPoliticalParty}
             onChange={() => setIsInPoliticalParty(!isInPoliticalParty)}
             iflabel
-            labelText="Is In Political Party?"
+            labelText="Is this political actor in a Political Party?"
           />
         </div>
 

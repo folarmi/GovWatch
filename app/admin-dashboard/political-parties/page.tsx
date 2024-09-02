@@ -3,13 +3,14 @@
 import AdminButton from "@/app/component/forms/AdminButton";
 import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
 import CreatePoliticalActor from "@/app/component/modals/CreatePoliticalActor";
+import CreatePoliticalParty from "@/app/component/modals/CreatePoliticalParty";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";
 import { MDAType } from "@/app/types/generalTypes";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
-const PoliticalActors = () => {
+const PoliticalParties = () => {
   const [data, setData] = React.useState<MDAType[]>([
     {
       mdaCode: "37001",
@@ -30,7 +31,7 @@ const PoliticalActors = () => {
       agencies: "Phs, Yola",
     },
   ]);
-  const [createPoliticalActor, setCreatePoliticalActor] = useState(false);
+  const [createPoliticalActor, setCreatePoliticalActor] = useState(true);
 
   const columnHelper = createColumnHelper<MDAType>();
   const columns = [
@@ -78,17 +79,17 @@ const PoliticalActors = () => {
   return (
     <div className="mt-10">
       <div className="flex justify-end w-full mb-4">
-        <AdminButton buttonText="Add Political Actor" onClick={toggleModal} />
+        <AdminButton buttonText="Add Political Party" onClick={toggleModal} />
       </div>
       <Table columns={columns} data={data} />
 
       <Modal show={createPoliticalActor} toggleModal={toggleModal}>
         <div className="p-4">
-          <CreatePoliticalActor toggleModal={toggleModal} />
+          <CreatePoliticalParty toggleModal={toggleModal} />
         </div>
       </Modal>
     </div>
   );
 };
 
-export default PoliticalActors;
+export default PoliticalParties;

@@ -328,6 +328,12 @@ export const adminDashboardSideBarItems = [
     link: "/admin-dashboard/political-actors",
   },
   {
+    id: 12,
+    name: "Political Parties",
+    image: categoriesIcon,
+    link: "/admin-dashboard/political-parties",
+  },
+  {
     id: 2,
     name: "Categories",
     image: categoriesIcon,

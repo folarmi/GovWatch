@@ -252,3 +252,10 @@ const CreateState = ({ toggleModal }: any) => {
 };
 
 export default CreateState;
+
+// {
+//   "article": "string",
+//   "image": "string",
+//   "province": "string",
+//   "tags": "string",
+// }

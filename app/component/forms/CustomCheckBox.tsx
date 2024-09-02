@@ -6,6 +6,7 @@ type CheckBoxProps = {
   onChange: any;
   labelText?: string;
   labelStyles?: string;
+  name?: string;
 };
 
 const CustomCheckBox = ({
@@ -14,19 +15,20 @@ const CustomCheckBox = ({
   onChange,
   labelText,
   labelStyles,
+  name,
 }: CheckBoxProps) => {
   return (
     <div className="flex items-center">
       <input
         checked={checked}
-        id="checked-checkbox"
+        id={name}
         type="checkbox"
         value=""
         onChange={onChange}
         className="hidden"
       />
       <label
-        htmlFor="checked-checkbox"
+        htmlFor={name}
         className={`relative cursor-pointer w-6 h-6 rounded-lg flex items-center justify-center ${
           checked ? "bg-primary" : "bg-white border-[0.67px] border-gray-400"
         }`}
@@ -49,7 +51,10 @@ const CustomCheckBox = ({
         </svg>
       </label>
       {iflabel && (
-        <label htmlFor="checked-checkbox" className={`ms-2 ${labelStyles}`}>
+        <label
+          htmlFor={name}
+          className={`ms-2 whitespace-nowrap ${labelStyles}`}
+        >
           {labelText}
         </label>
       )}
