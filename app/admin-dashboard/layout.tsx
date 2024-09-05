@@ -148,11 +148,7 @@ const AdminDashboardLayout = ({
           <InformationTab data={adminDashboard} />
           <div className="flex">
             {/* Sidebar */}
-            <section className="bg-green_100 text-white my-10 mr-8 pt-6 rounded-lg max-h-screen overflow-y-scroll w-[400px]">
-              {/* <p className="text-base font-medium px-8 pb-8 cursor-pointer">
-                Admin
-              </p> */}
-
+            <section className="bg-green_100 text-white my-10 mr-8 rounded-lg max-h-screen overflow-y-scroll w-[400px]">
               {/* Dynamic Sidebar Items */}
               {/* {adminDashboardSideBarItems.map(({ category, items }) => (
                 <div key={category} className="px-8 mb-6">
