@@ -84,6 +84,12 @@ const Header = () => {
               <CustomButton>Sign In</CustomButton>
             </Link>
           )}
+
+          {isAuthenticated && (
+            <Link className="hidden md:flex" href="/signin">
+              <CustomButton onClick={logout}>Sign Out</CustomButton>
+            </Link>
+          )}
         </>
 
         <Image

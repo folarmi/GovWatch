@@ -51,7 +51,6 @@ const Signup = () => {
   const onSubmit: SubmitHandler<RegisterFormValues> = (data: any) => {
     const formValues = {
       ...data,
-      country: data.country.value,
     };
     // console.log(formValues);
     signUpMutation.mutate(formValues);
@@ -59,13 +58,12 @@ const Signup = () => {
 
   return (
     <AuthLayout
-      header="Empowering Nigerians with information fostering citizenship participation in governance" 
-      text="" 
-      img="logo.svg" 
+      header="Empowering Nigerians with information fostering citizenship participation in governance"
+      text=""
+      img="logo.svg"
       banner="signup-Banner.svg"
-      headerMarginTop="31rem">
-
-
+      headerMarginTop="31rem"
+    >
       <div className="mb-24 md:mx-10 mx-6 w-96">
         <h1 className="font-bold text-4xl mb-2">Let's get started</h1>
         <p className="mb-9">Kindly fill in the required details below</p>

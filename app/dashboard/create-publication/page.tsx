@@ -29,7 +29,7 @@ const CreatePublication = () => {
   const { userCountry, userId } = useAppSelector(
     (state: RootState) => state.auth
   );
-  const [value, setValue] = useState("");
+  const [article, setArticle] = useState("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [selectedState, setSelectedState] = useState("");
   const [selectedLGA, setSelectedLGA] = useState("");
@@ -37,13 +37,10 @@ const CreatePublication = () => {
   const [isFederal, setIsFederal] = useState(false);
   const [isPromise, setIsPromise] = useState(false);
   const [isPromiseFulfilled, setIsPromiseFulfilled] = useState(false);
+  const [tags, setTags] = useState<string[]>([]);
 
   const [isAdditionalInformation, setIsAdditionalInformation] = useState(true);
-  const {
-    data: categoriesData,
-    isLoading: isCategoriesLoading,
-    error,
-  } = useGetData({
+  const { data: categoriesData, isLoading: isCategoriesLoading } = useGetData({
     url: "Categories/GetAllCategories",
     queryKey: ["GetAllCategories"],
   });
@@ -70,9 +67,9 @@ const CreatePublication = () => {
   });
 
   const { data: wardData, isLoading: wardDataIsLoading } = useGetData({
-    url: `/Wards/GetListOfWards?lgaName=${selectedLCDA}&pageNumber=1&pageSize=100`,
-    queryKey: ["GetListOfWards", selectedLCDA],
-    enabled: !!selectedLCDA,
+    url: `/Wards/GetListOfWards?lgaName=${selectedLGA}&pageNumber=1&pageSize=100`,
+    queryKey: ["GetListOfWards", selectedLGA],
+    enabled: !!selectedLGA,
   });
 
   const { data: mdaData, isLoading: mdaDataIsLoading } = useGetData({
@@ -190,7 +187,17 @@ const CreatePublication = () => {
       isFederal,
       isPromise,
       contributorPublicId: userId,
+      image: backendPath,
       isPromiseFulfilled,
+      tags: tags.join(" , "),
+      article,
+      // hardcoded values
+      state: "Ethan Spears",
+      lga: "Alexander Calderon",
+      mda: "Talon Bell",
+      lcda: "Lane Vincent",
+      ward: "Aidan Lara",
+      politicalActorName: "Aphrodite Douglas",
     };
     console.log(data);
     createPublicationMutation.mutate(formData);
@@ -286,6 +293,7 @@ const CreatePublication = () => {
                 label="LCDA"
                 control={control}
                 placeholder="Select LCDA"
+                customOnChange={(name: any) => setSelectedLCDA(name?.value)}
               />
               <CustomSelect
                 name="ward"
@@ -365,7 +373,11 @@ const CreatePublication = () => {
             </div>
 
             {/* Tags and References */}
-            <TagsInput onChange={handleTagsChange} />
+            <TagsInput
+              onChange={handleTagsChange}
+              tags={tags}
+              setTags={setTags}
+            />
             <CustomInput
               label="Reference"
               name="reference"
@@ -389,8 +401,8 @@ const CreatePublication = () => {
           marginBottom: "5rem",
         }}
         theme="snow"
-        value={value}
-        onChange={setValue}
+        value={article}
+        onChange={setArticle}
       />
 
       {/* Actions */}
@@ -415,6 +427,24 @@ const CreatePublication = () => {
 export default CreatePublication;
 
 // {
-//   "mySelect": 1,
-//   "createdBy": "a7e36778-2fec-4b6e-8569-dbe47778dff0"
+//   "snippet": "Iure velit voluptat",
+//   "image": "http://govwatch.runasp.net/Uploads/76adca8e-4891-48ac-a5ec-7f2824b65e05_Screenshot 2024-08-22 at 03.38.34.png",
+//   "imageCaption": "Vel reprehenderit es",
+//   "contributorPublicId": "a7e36778-2fec-4b6e-8569-dbe47778dff0",
+//   "isFederal": true,
+//   "isPromise": true,
+//   "isPromiseFulfilled": true
+
+//   "title": "Ut quisquam magna ea",
+//   "authorName": "Hedda Merritt",
+//   "category": 2,
+//   "state": "Ethan Spears",
+//   "lga": "Alexander Calderon",
+//   "datePromiseMade": "1987-11-25",
+//   "promisedDeadline": "2024-04-04",
+//   "datePromiseFulfilled": "2019-09-12",
+//   "reference": "Et dignissimos numqu",
+//   "link": "Dolore illum iusto ",
+//   "country": "Nigeria",
+
 // }

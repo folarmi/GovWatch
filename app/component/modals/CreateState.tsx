@@ -61,7 +61,6 @@ const CreateState = ({ toggleModal }: any) => {
       createdBy: userId,
     };
 
-    console.log(formData);
     createStateMutation.mutate(formData);
   };
 
@@ -252,10 +251,3 @@ const CreateState = ({ toggleModal }: any) => {
 };
 
 export default CreateState;
-
-// {
-//   "article": "string",
-//   "image": "string",
-//   "province": "string",
-//   "tags": "string",
-// }

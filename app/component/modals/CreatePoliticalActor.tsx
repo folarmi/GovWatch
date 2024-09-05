@@ -36,6 +36,21 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
   };
   const uploadMutation = useUploadMutation(handleSuccess, handleError);
 
+  const { data: politicalActorData, isLoading: politicalActorDataIsLoading } =
+    useGetData({
+      url: `/PoliticalParties/GetListOfPoliticalParties?country=${userCountry}&pageNumber=1&pageSize=100`,
+      queryKey: ["GetListOfLcdas"],
+    });
+
+  const politicalDataFormatted =
+    politicalActorData &&
+    politicalActorData?.map((item: string) => {
+      return {
+        label: item,
+        value: item,
+      };
+    });
+
   const handleFileUpload = (file: File) => {
     setUploadedFile(file);
     const formData = new FormData();
@@ -91,7 +106,7 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
 
       <form
         onSubmit={handleSubmit(submitForm)}
-        className="my-4 grid grid-cols-4 gap-x-4 w-full"
+        className="my-4 grid grid-cols-2 gap-x-4 w-full"
       >
         <CustomInput
           label="Political Actor Name"
@@ -130,7 +145,7 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
 
         <div
           className={`flex flex-col justify-center mt-3 ${
-            isInPoliticalParty ? "col-span-1" : "col-span-4 "
+            isInPoliticalParty ? "col-span-1" : "col-span-2 "
           } mb-4`}
         >
           <CustomCheckBox
@@ -138,28 +153,25 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
             onChange={() => setIsInPoliticalParty(!isInPoliticalParty)}
             iflabel
             labelText="Is this political actor in a Political Party?"
+            name="isInPoliticalParty"
           />
         </div>
 
         {isInPoliticalParty && (
-          <CustomInput
-            label="Current Political Party"
+          <CustomSelect
             name="currentPoliticalParty"
+            options={politicalDataFormatted}
+            isLoading={politicalActorDataIsLoading}
+            label="Current Political Party"
             control={control}
-            rules={{ required: "Current Political Party is required" }}
-            className="mt-4 col-span-3"
+            placeholder="Select Political Party"
+            className="mt-4 col-span-2"
           />
         )}
 
-        <div className="col-span-2">
-          <CustomTextArea
-            name="otherInformation"
-            control={control}
-            label="Other Information"
-          />
-        </div>
+        <CustomTextArea name="bio" control={control} label="Bio" />
 
-        <div className="col-span-2 ">
+        <div className="">
           <p className="text-sm font-medium pb-2">Image</p>
 
           <FileUploader
@@ -173,6 +185,14 @@ const CreatePoliticalActor = ({ toggleModal }: any) => {
               fileSize={uploadedFile.size}
             />
           )}
+        </div>
+
+        <div className="col-span-2">
+          <CustomTextArea
+            name="otherInformation"
+            control={control}
+            label="Other Information"
+          />
         </div>
 
         <div className="flex w-full justify-end mr-auto">

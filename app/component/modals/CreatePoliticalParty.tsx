@@ -91,3 +91,30 @@ const CreatePoliticalParty = ({ toggleModal }: any) => {
 };
 
 export default CreatePoliticalParty;
+
+// {
+//   "title": "Eius sapiente fugiat",
+//   "authorName": "Deirdre Carr",
+//   "snippet": "Deserunt elit volup",
+//   "category": 4,
+//   "imageCaption": "Dolor eum occaecat d",
+//   "state": "Ethan Spears",
+//   "lga": "Alexander Calderon",
+//   "lcda": "Lane Vincent",
+//   "ward": "Aidan Lara",
+//   "datePromiseMade": "1975-08-01",
+//   "promisedDeadline": "2003-07-26",
+//   "datePromiseFulfilled": "2017-05-10",
+//   "politicalActorName": "Aphrodite Douglas",
+//   "mda": "Talon Bell",
+//   "reference": "Consequuntur veritat",
+//   "link": "Doloremque ab vel to",
+//   "country": "Nigeria",
+//   "isFederal": true,
+//   "isPromise": true,
+//   "contributorPublicId": "a7e36778-2fec-4b6e-8569-dbe47778dff0",
+//   "image": "http://govwatch.runasp.net/Uploads/2d60d3e5-481d-4559-b749-9269f83f4a41_Screenshot 2024-08-16 at 10.57.26.png",
+//   "isPromiseFulfilled": false,
+//   "tags": "ggg , test , testing",
+//   "article": "<p>Voluptatem. Exceptur.</p>"
+// }

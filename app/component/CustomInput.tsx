@@ -92,3 +92,37 @@ const CustomInput: React.FC<CustomInputProps> = ({
 };
 
 export default CustomInput;
+
+// {
+//   "snippet": "string",
+//   "article": "string",
+//   "image": "string",
+//   "imageCaption": "string",
+//   "contributorPublicId": "string",
+//   "mda": "string",
+//   "category": "string",
+//   "state": "string",
+//   "ward": "string",
+//   "lcda": "string",
+//   "isFederal": true,
+//   "lga": "string",
+//   "province": "string",
+//   "title": "string",
+//   "tags": "string",
+//   "reference": "string",
+//   "authorName": "string",
+//   "link": "string",
+//   "isPromise": true,
+//   "isPromisedFulfilled": true,
+//   "datePromiseMade": "2024-09-02T13:16:53.137Z",
+//   "promiseDeadline": "2024-09-02T13:16:53.137Z",
+//   "datePromiseFulfilled": "2024-09-02T13:16:53.137Z",
+//   "politicalActorName": "string",
+//   "country": "string",
+//   "cancellationToken": {
+//     "waitHandle": {
+//       "handle": {},
+//       "safeWaitHandle": {}
+//     }
+//   }
+// }

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 type TagsInputProps = {
   onChange: (tags: string[]) => void; // Callback to provide tags to parent
+  tags: any;
+  setTags: any;
 };
 
-const TagsInput: React.FC<TagsInputProps> = ({ onChange }) => {
+const TagsInput: React.FC<TagsInputProps> = ({ onChange, tags, setTags }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
 
   // Handle input value change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +18,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onChange }) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim()) {
       e.preventDefault(); // Prevent form submission or default behavior
-      setTags((prevTags) => {
+      setTags((prevTags: any) => {
         const newTags = [...prevTags, inputValue.trim()];
         onChange(newTags); // Notify parent component about the new tags
         return newTags;
@@ -28,25 +29,30 @@ const TagsInput: React.FC<TagsInputProps> = ({ onChange }) => {
 
   // Handle removing a tag
   const removeTag = (indexToRemove: number) => {
-    setTags((prevTags) => {
-      const newTags = prevTags.filter((_, index) => index !== indexToRemove);
+    setTags((prevTags: any) => {
+      const newTags = prevTags.filter(
+        (_: any, index: any) => index !== indexToRemove
+      );
       onChange(newTags);
       return newTags;
     });
   };
 
   return (
-    <div className="tag-input-container">
+    <div className="tag-input-container mt-4">
+      <label htmlFor="Article Tags" className="text-sm font-medium">
+        Article Tags
+      </label>
       <input
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="Type and press Enter..."
-        className="h-12 rounded-lg px-4 border-2 border-black bg-gray-50 text-sm w-full mt-4"
+        className="h-12 rounded-lg px-4 border-2 border-black bg-gray-50 text-sm w-full"
       />
       <div className="flex gap-x-2 cursor-pointer">
-        {tags.map((tag, index) => (
+        {tags.map((tag: any, index: any) => (
           <div key={index} className="tag">
             <span className="bg-primary text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded">
               {tag}

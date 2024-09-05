@@ -31,7 +31,7 @@ const PoliticalParties = () => {
       agencies: "Phs, Yola",
     },
   ]);
-  const [createPoliticalActor, setCreatePoliticalActor] = useState(true);
+  const [createPoliticalActor, setCreatePoliticalActor] = useState(false);
 
   const columnHelper = createColumnHelper<MDAType>();
   const columns = [
