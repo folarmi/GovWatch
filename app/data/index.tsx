@@ -14,6 +14,7 @@ import lga from "../../public/lga.svg";
 import mda from "../../public/mda.svg";
 import region from "../../public/region.svg";
 import inbox from "../../public/inbox.svg";
+import pending from "../../public/pending.svg";
 
 export const SidebarList: SidebarItemProp[] = [
   {
@@ -314,83 +315,219 @@ export const contributorSideBarItems = [
   },
 ];
 
+// export const adminDashboardSideBarItems = [
+//   {
+//     id: 1,
+//     name: "Manage Users",
+//     image: iconTwo,
+//     link: "/admin-dashboard/manage-users",
+//   },
+//   {
+//     id: 11,
+//     name: "Political Actors",
+//     image: categoriesIcon,
+//     link: "/admin-dashboard/political-actors",
+//   },
+//   {
+//     id: 12,
+//     name: "Political Parties",
+//     image: categoriesIcon,
+//     link: "/admin-dashboard/political-parties",
+//   },
+//   {
+//     id: 2,
+//     name: "Categories",
+//     image: categoriesIcon,
+//     link: "/admin-dashboard/categories",
+//   },
+//   {
+//     id: 3,
+//     name: "Country",
+//     image: state,
+//     link: "/admin-dashboard/country",
+//   },
+//   {
+//     id: 7,
+//     name: "Region",
+//     image: region,
+//     link: "/admin-dashboard/region",
+//   },
+//   {
+//     id: 4,
+//     name: "State",
+//     image: state,
+//     link: "/admin-dashboard/state",
+//   },
+//   {
+//     id: 5,
+//     name: "LGA",
+//     image: lga,
+//     link: "/admin-dashboard/lga",
+//   },
+//   {
+//     id: 9,
+//     name: "Ward",
+//     image: lga,
+//     link: "/admin-dashboard/ward",
+//   },
+//   {
+//     id: 10,
+//     name: "LCDA",
+//     image: lga,
+//     link: "/admin-dashboard/lcda",
+//   },
+//   {
+//     id: 6,
+//     name: "MDA",
+//     image: mda,
+//     link: "/admin-dashboard/mda",
+//   },
+//   {
+//     id: 10,
+//     name: "Tags",
+//     image: lga,
+//     link: "/admin-dashboard/tags",
+//   },
+//   {
+//     id: 8,
+//     name: "All inbox",
+//     image: inbox,
+//     link: "/admin-dashboard/all-inbox",
+//   },
+// ];
+
 export const adminDashboardSideBarItems = [
   {
-    id: 1,
-    name: "Manage Users",
-    image: iconTwo,
-    link: "/admin-dashboard/manage-users",
+    category: "User Management",
+    items: [
+      {
+        id: 1,
+        name: "Manage Users",
+        image: iconTwo,
+        link: "/admin-dashboard/manage-users",
+      },
+    ],
   },
   {
-    id: 11,
-    name: "Political Actors",
-    image: categoriesIcon,
-    link: "/admin-dashboard/political-actors",
+    category: "Publications",
+    items: [
+      {
+        id: 1,
+        name: "Pending",
+        image: pending,
+        link: "/admin-dashboard/manage-users",
+      },
+      {
+        id: 2,
+        name: "Unapproved",
+        image: iconSeven,
+        link: "/admin-dashboard/manage-users",
+      },
+      {
+        id: 3,
+        name: "Approved",
+        image: iconThree,
+        link: "/admin-dashboard/manage-users",
+      },
+      {
+        id: 4,
+        name: "Reviewed",
+        image: iconThree,
+        link: "/admin-dashboard/manage-users",
+      },
+      {
+        id: 5,
+        name: "Total",
+        image: iconThree,
+        link: "/admin-dashboard/manage-users",
+      },
+    ],
   },
   {
-    id: 12,
-    name: "Political Parties",
-    image: categoriesIcon,
-    link: "/admin-dashboard/political-parties",
+    category: "Geographic Locations",
+    items: [
+      {
+        id: 3,
+        name: "Country",
+        image: state,
+        link: "/admin-dashboard/country",
+      },
+      {
+        id: 7,
+        name: "Region",
+        image: region,
+        link: "/admin-dashboard/region",
+      },
+      {
+        id: 4,
+        name: "State",
+        image: state,
+        link: "/admin-dashboard/state",
+      },
+      {
+        id: 5,
+        name: "LGA",
+        image: lga,
+        link: "/admin-dashboard/lga",
+      },
+      {
+        id: 9,
+        name: "Ward",
+        image: lga,
+        link: "/admin-dashboard/ward",
+      },
+      {
+        id: 10,
+        name: "LCDA",
+        image: lga,
+        link: "/admin-dashboard/lcda",
+      },
+    ],
   },
   {
-    id: 2,
-    name: "Categories",
-    image: categoriesIcon,
-    link: "/admin-dashboard/categories",
+    category: "Political Entities",
+    items: [
+      {
+        id: 11,
+        name: "Political Actors",
+        image: categoriesIcon,
+        link: "/admin-dashboard/political-actors",
+      },
+      {
+        id: 12,
+        name: "Political Parties",
+        image: categoriesIcon,
+        link: "/admin-dashboard/political-parties",
+      },
+      {
+        id: 2,
+        name: "Categories",
+        image: categoriesIcon,
+        link: "/admin-dashboard/categories",
+      },
+    ],
   },
   {
-    id: 3,
-    name: "Country",
-    image: state,
-    link: "/admin-dashboard/country",
-  },
-  {
-    id: 7,
-    name: "Region",
-    image: region,
-    link: "/admin-dashboard/region",
-  },
-  {
-    id: 4,
-    name: "State",
-    image: state,
-    link: "/admin-dashboard/state",
-  },
-  {
-    id: 5,
-    name: "LGA",
-    image: lga,
-    link: "/admin-dashboard/lga",
-  },
-  {
-    id: 9,
-    name: "Ward",
-    image: lga,
-    link: "/admin-dashboard/ward",
-  },
-  {
-    id: 10,
-    name: "LCDA",
-    image: lga,
-    link: "/admin-dashboard/lcda",
-  },
-  {
-    id: 6,
-    name: "MDA",
-    image: mda,
-    link: "/admin-dashboard/mda",
-  },
-  {
-    id: 10,
-    name: "Tags",
-    image: lga,
-    link: "/admin-dashboard/tags",
-  },
-  {
-    id: 8,
-    name: "All inbox",
-    image: inbox,
-    link: "/admin-dashboard/all-inbox",
+    category: "Miscellaneous",
+    items: [
+      {
+        id: 6,
+        name: "MDA",
+        image: mda,
+        link: "/admin-dashboard/mda",
+      },
+      {
+        id: 13,
+        name: "Tags",
+        image: lga,
+        link: "/admin-dashboard/tags",
+      },
+      {
+        id: 8,
+        name: "All inbox",
+        image: inbox,
+        link: "/admin-dashboard/all-inbox",
+      },
+    ],
   },
 ];
