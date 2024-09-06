@@ -5,36 +5,22 @@ import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
 import CreateLGA from "@/app/component/modals/CreateLGA";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";
-import { LGAType } from "@/app/types/generalTypes";
+import { useGetData } from "@/app/hooks/apiCalls";
+import { useAppSelector } from "@/app/lib/hook";
+import { RootState } from "@/app/lib/store";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
 const LGA = () => {
-  const [createLGAModal, setCreateLGAModal] = useState(false);
-  const [data, setData] = React.useState<LGAType[]>([
-    {
-      lga: "Aba North",
-      about: "Lorem ipsum dolor sit amet consectetur.  ",
-      post: 50,
-    },
-    {
-      lga: "Aba South",
-      about: "Lorem ipsum dolor sit amet consectetur.",
-      post: 50,
-    },
-    {
-      lga: "Arochukwu",
-      about: "Lorem ipsum dolor sit amet consectetur.",
-      post: 50,
-    },
-    {
-      lga: "Bogoro",
-      about: "Lorem ipsum dolor sit amet consectetur.",
-      post: 50,
-    },
-  ]);
+  const { userCountry } = useAppSelector((state: RootState) => state.auth);
+  const { data: lgaData, isLoading } = useGetData({
+    url: `/Lgas/GetAllLgas?country=${userCountry}&pageNumber=1&pageSize=10'`,
+    queryKey: ["GetAllRegions"],
+  });
 
-  const columnHelper = createColumnHelper<LGAType>();
+  const [createLGAModal, setCreateLGAModal] = useState(false);
+
+  const columnHelper = createColumnHelper<any>();
   const columns = [
     // Display Column
     columnHelper.display({
@@ -47,20 +33,24 @@ const LGA = () => {
         />
       ),
     }),
-    columnHelper.accessor("lga", {
-      header: "State",
+    columnHelper.accessor("image", {
+      header: "Image",
+      cell: (info) => <span className="text-sm font-normal">ggg</span>,
+    }),
+    columnHelper.accessor("name", {
+      header: "LGA",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("about", {
-      header: "About",
+    columnHelper.accessor("capital", {
+      header: "Capital",
       cell: (info) => (
         <p className="text-sm font-normal w-[272px] ">{info.getValue()}</p>
       ),
     }),
-    columnHelper.accessor("post", {
-      header: "Post",
+    columnHelper.accessor("chairman", {
+      header: "Governor",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
@@ -76,7 +66,11 @@ const LGA = () => {
       <div className="flex justify-end w-full mb-4">
         <AdminButton buttonText="Add LGA" onClick={toggleModal} />
       </div>
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={lgaData?.lgaViewModel}
+        isLoading={isLoading}
+      />
 
       <Modal show={createLGAModal} toggleModal={toggleModal}>
         <div className="p-4">

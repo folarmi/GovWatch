@@ -78,9 +78,10 @@ export const useGetData = ({ url, queryKey, enabled }: UseDataOptions) => {
       return response?.data;
     },
     retry: false,
+    // retry: true,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
-    staleTime: 0,
+    // staleTime: 0,
     enabled,
   });
 };

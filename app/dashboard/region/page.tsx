@@ -12,7 +12,8 @@ import React, { useState } from "react";
 
 const Region = () => {
   const { data: regionData, isLoading } = useGetData({
-    url: "Regions/GetAllRegions",
+    url: "Regions/GetRegions?page=1&pageSize=10",
+    // url: "Regions/GetAllRegions",
     queryKey: ["GetAllRegions"],
   });
   const [createRegion, setCreateRegion] = useState(false);
@@ -31,7 +32,7 @@ const Region = () => {
       ),
     }),
     columnHelper.accessor("name", {
-      header: "Region Name",
+      header: "Name",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
