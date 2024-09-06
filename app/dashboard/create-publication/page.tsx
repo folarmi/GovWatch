@@ -149,7 +149,7 @@ const CreatePublication = () => {
     });
 
   const createPublicationMutation = useCustomMutation({
-    endpoint: "PoliticalParties/CreatePoliticalParty",
+    endpoint: "Publications/CreatePublication",
     successMessage: (data: any) => data?.remark,
     errorMessage: (error: any) => error?.response?.data?.remark,
     // onSuccessCallback: () => {

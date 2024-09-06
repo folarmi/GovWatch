@@ -41,15 +41,16 @@ const SignIn = () => {
         dispatch(updateUserCountry(data?.data?.country));
         loginFromContext();
 
-        if (userType === "Admin") {
-          router.push("/admin-dashboard");
-        } else if (userType === "Editor") {
-          router.push("/editor-dashboard");
-        } else if (userType === "Contributor") {
-          router.push("/contributor-dashboard");
-        } else {
-          router.push("/dashboard");
-        }
+        router.push("/dashboard");
+        // if (userType === "Admin") {
+        //   router.push("/admin-dashboard");
+        // } else if (userType === "Editor") {
+        //   router.push("/editor-dashboard");
+        // } else if (userType === "Contributor") {
+        //   router.push("/contributor-dashboard");
+        // } else {
+        //   router.push("/dashboard");
+        // }
       }
     },
     onError: (error: any) => {
@@ -68,14 +69,14 @@ const SignIn = () => {
 
   return (
     <AuthLayout
-      header="Be informed, Engaged And Empowered" 
+      header="Be informed, Engaged And Empowered"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi
       cupiditate voluptates blanditiis libero neque commodi quas quod
       itaque nam, at delectus amet voluptatibus iure in quibusdam est
-      expedita corporis!" 
-      img="logo.svg" 
-      banner="Signin-Banner.svg">
-
+      expedita corporis!"
+      img="logo.svg"
+      banner="Signin-Banner.svg"
+    >
       <div className="mb-24 md:mx-10 mx-12">
         <h1 className="font-bold text-4xl mb-2">Welcome Back</h1>
         <p className="mb-9">

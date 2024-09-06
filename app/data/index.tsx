@@ -315,98 +315,18 @@ export const contributorSideBarItems = [
   },
 ];
 
-// export const adminDashboardSideBarItems = [
-//   {
-//     id: 1,
-//     name: "Manage Users",
-//     image: iconTwo,
-//     link: "/dashboard/manage-users",
-//   },
-//   {
-//     id: 11,
-//     name: "Political Actors",
-//     image: categoriesIcon,
-//     link: "/dashboard/political-actors",
-//   },
-//   {
-//     id: 12,
-//     name: "Political Parties",
-//     image: categoriesIcon,
-//     link: "/dashboard/political-parties",
-//   },
-//   {
-//     id: 2,
-//     name: "Categories",
-//     image: categoriesIcon,
-//     link: "/dashboard/categories",
-//   },
-//   {
-//     id: 3,
-//     name: "Country",
-//     image: state,
-//     link: "/dashboard/country",
-//   },
-//   {
-//     id: 7,
-//     name: "Region",
-//     image: region,
-//     link: "/dashboard/region",
-//   },
-//   {
-//     id: 4,
-//     name: "State",
-//     image: state,
-//     link: "/dashboard/state",
-//   },
-//   {
-//     id: 5,
-//     name: "LGA",
-//     image: lga,
-//     link: "/dashboard/lga",
-//   },
-//   {
-//     id: 9,
-//     name: "Ward",
-//     image: lga,
-//     link: "/dashboard/ward",
-//   },
-//   {
-//     id: 10,
-//     name: "LCDA",
-//     image: lga,
-//     link: "/dashboard/lcda",
-//   },
-//   {
-//     id: 6,
-//     name: "MDA",
-//     image: mda,
-//     link: "/dashboard/mda",
-//   },
-//   {
-//     id: 10,
-//     name: "Tags",
-//     image: lga,
-//     link: "/dashboard/tags",
-//   },
-//   {
-//     id: 8,
-//     name: "All inbox",
-//     image: inbox,
-//     link: "/dashboard/all-inbox",
-//   },
-// ];
-
-export const adminDashboardSideBarItems = [
+export const dashboardSideBarItems = [
   {
     category: "User Management",
     items: [
       {
         id: 1,
-        name: "Manage Users",
+        name: "Users",
         image: iconTwo,
         link: "/dashboard/manage-users",
       },
     ],
+    userRole: ["Admin"],
   },
   {
     category: "Publications",
@@ -442,6 +362,7 @@ export const adminDashboardSideBarItems = [
         link: "/dashboard/manage-users",
       },
     ],
+    userRole: ["Admin", "Editor"],
   },
   {
     category: "Geographic Locations",
@@ -483,6 +404,7 @@ export const adminDashboardSideBarItems = [
         link: "/dashboard/lcda",
       },
     ],
+    userRole: ["Admin", "Editor"],
   },
   {
     category: "Political Entities",
@@ -506,6 +428,7 @@ export const adminDashboardSideBarItems = [
         link: "/dashboard/categories",
       },
     ],
+    userRole: ["Admin", "Editor"],
   },
   {
     category: "Miscellaneous",
@@ -529,5 +452,66 @@ export const adminDashboardSideBarItems = [
         link: "/dashboard/all-inbox",
       },
     ],
+    userRole: ["Admin", "Editor"],
+  },
+  {
+    category: "Miscellaneous",
+    items: [
+      {
+        id: 6,
+        name: "MDA",
+        image: mda,
+        link: "/dashboard/mda",
+      },
+      {
+        id: 13,
+        name: "Tags",
+        image: lga,
+        link: "/dashboard/tags",
+      },
+      {
+        id: 8,
+        name: "All inbox",
+        image: inbox,
+        link: "/dashboard/all-inbox",
+      },
+    ],
+    userRole: ["Admin", "Editor"],
+  },
+  {
+    category: "Publications",
+    items: [
+      {
+        id: 13,
+        name: "Total",
+        image: lga,
+        link: "/dashboard/tags",
+      },
+      {
+        id: 8,
+        name: "Submitted",
+        image: inbox,
+        link: "/dashboard/all-inbox",
+      },
+      {
+        id: 8,
+        name: "Rejected",
+        image: inbox,
+        link: "/dashboard/all-inbox",
+      },
+      {
+        id: 8,
+        name: "Approved",
+        image: inbox,
+        link: "/dashboard/all-inbox",
+      },
+      {
+        id: 8,
+        name: "Bookmarks",
+        image: inbox,
+        link: "/dashboard/all-inbox",
+      },
+    ],
+    userRole: ["Contributor"],
   },
 ];

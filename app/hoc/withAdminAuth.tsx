@@ -20,12 +20,12 @@ const withAdminAuth = <P extends object>(
         const authToken = sessionStorage.getItem("token");
         if (!authToken) {
           router.push("/");
-        } else if (userType === "Editor") {
-          router.push("/editor-dashboard");
-        } else if (userType === "Contributor") {
-          router.push("/contributor-dashboard");
-        } else if (userType === "User") {
-          router.push("/dashboard");
+          // } else if (userType === "Editor") {
+          //   router.push("/editor-dashboard");
+          // } else if (userType === "Contributor") {
+          //   router.push("/contributor-dashboard");
+          // } else if (userType === "User") {
+          //   router.push("/dashboard");
         } else {
           setLoading(false); // User is authenticated and an admin
         }
