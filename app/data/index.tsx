@@ -455,30 +455,6 @@ export const dashboardSideBarItems = [
     userRole: ["Admin", "Editor"],
   },
   {
-    category: "Miscellaneous",
-    items: [
-      {
-        id: 6,
-        name: "MDA",
-        image: mda,
-        link: "/dashboard/mda",
-      },
-      {
-        id: 13,
-        name: "Tags",
-        image: lga,
-        link: "/dashboard/tags",
-      },
-      {
-        id: 8,
-        name: "All inbox",
-        image: inbox,
-        link: "/dashboard/all-inbox",
-      },
-    ],
-    userRole: ["Admin", "Editor"],
-  },
-  {
     category: "Publications",
     items: [
       {

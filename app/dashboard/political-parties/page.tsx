@@ -2,38 +2,21 @@
 
 import AdminButton from "@/app/component/forms/AdminButton";
 import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
-import CreatePoliticalActor from "@/app/component/modals/CreatePoliticalActor";
 import CreatePoliticalParty from "@/app/component/modals/CreatePoliticalParty";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";
-import { MDAType } from "@/app/types/generalTypes";
+import { useGetData } from "@/app/hooks/apiCalls";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
 const PoliticalParties = () => {
-  const [data, setData] = React.useState<MDAType[]>([
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-  ]);
+  const { data: politicalPartiesData, isLoading } = useGetData({
+    url: `PoliticalParties/GetAllPoliticalParties?pageNumber=1&pageSize=10`,
+    queryKey: ["GetAllPoliticalPartiesTable"],
+  });
   const [createPoliticalActor, setCreatePoliticalActor] = useState(false);
 
-  const columnHelper = createColumnHelper<MDAType>();
+  const columnHelper = createColumnHelper<any>();
   const columns = [
     // Display Column
     columnHelper.display({
@@ -46,26 +29,32 @@ const PoliticalParties = () => {
         />
       ),
     }),
-    columnHelper.accessor("mdaCode", {
-      header: "MDA Code",
+    columnHelper.accessor("name", {
+      header: "Name",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("ministries", {
-      header: "Ministries",
+    columnHelper.accessor("country", {
+      header: "Country",
       cell: (info) => (
         <p className="text-sm font-normal w-[272px] ">{info.getValue()}</p>
       ),
     }),
-    columnHelper.accessor("departments", {
-      header: "Department",
+    columnHelper.accessor("dateFounded", {
+      header: "Date Founded",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("agencies", {
-      header: "Agencies",
+    columnHelper.accessor("bio", {
+      header: "Bio",
+      cell: (info) => (
+        <span className="text-sm font-normal">{info.getValue()}</span>
+      ),
+    }),
+    columnHelper.accessor("leaderName", {
+      header: "Leader Name",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
@@ -81,7 +70,11 @@ const PoliticalParties = () => {
       <div className="flex justify-end w-full mb-4">
         <AdminButton buttonText="Add Political Party" onClick={toggleModal} />
       </div>
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={politicalPartiesData?.politicalPartyViewModel}
+        isLoading={isLoading}
+      />
 
       <Modal show={createPoliticalActor} toggleModal={toggleModal}>
         <div className="p-4">

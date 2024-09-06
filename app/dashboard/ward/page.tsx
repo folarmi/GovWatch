@@ -11,8 +11,8 @@ import React, { useState } from "react";
 
 const Ward = () => {
   const { data: wardData, isLoading: wardDataIsLoading } = useGetData({
-    url: `/Countries/GetCountries`,
-    queryKey: ["GetCountries"],
+    url: `Wards/GetAllWards?pageNumber=1&pageSize=10`,
+    queryKey: ["GetAllWardsTable"],
   });
   const columnHelper = createColumnHelper<any>();
   const [createWardModal, setCreateWardModal] = useState(false);
@@ -62,7 +62,11 @@ const Ward = () => {
       <div className="flex justify-end w-full mb-4">
         <AdminButton buttonText="Add Ward" onClick={toggleModal} />
       </div>
-      <Table columns={columns} data={wardData?.wardViewModel} />
+      <Table
+        columns={columns}
+        data={wardData?.wardViewModel}
+        isLoading={wardDataIsLoading}
+      />
 
       <Modal show={createWardModal} toggleModal={toggleModal}>
         <div className="p-4">

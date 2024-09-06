@@ -14,7 +14,7 @@ import React, { useState } from "react";
 const Country = () => {
   const { data: countryData, isLoading: countryDataIsLoading } = useGetData({
     url: `/Countries/GetCountries`,
-    queryKey: ["GetCountries"],
+    queryKey: ["GetCountriesTable"],
   });
 
   const [createCountry, setCreateCountry] = useState(false);

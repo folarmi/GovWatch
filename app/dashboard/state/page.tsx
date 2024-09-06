@@ -9,15 +9,14 @@ import Table from "@/app/component/Table";
 import { useGetData } from "@/app/hooks/apiCalls";
 import { useAppSelector } from "@/app/lib/hook";
 import { RootState } from "@/app/lib/store";
-import { StateType } from "@/app/types/generalTypes";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
 const State = () => {
   const { userCountry } = useAppSelector((state: RootState) => state.auth);
   const { data: stateData, isLoading } = useGetData({
-    url: `States/GetAllStates?country=${userCountry}&page=1&pageSize=10'`,
-    queryKey: ["GetAllRegions"],
+    url: `States/GetAllStates?country=${userCountry}&page=1&pageSize=10`,
+    queryKey: ["GetAllStatesTable"],
   });
 
   const [createStateModal, setCreateStateModal] = useState(false);

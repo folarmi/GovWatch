@@ -5,34 +5,19 @@ import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
 import CreatePoliticalActor from "@/app/component/modals/CreatePoliticalActor";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";
+import { useGetData } from "@/app/hooks/apiCalls";
 import { MDAType } from "@/app/types/generalTypes";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
 const PoliticalActors = () => {
-  const [data, setData] = React.useState<MDAType[]>([
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-    {
-      mdaCode: "37001",
-      ministries: "Federal Ministry Of Industry,Trade And Investments",
-      departments: "Federal Ministry Of Industry,Trade And Investments",
-      agencies: "Phs, Yola",
-    },
-  ]);
+  const { data: politicalActorsData, isLoading } = useGetData({
+    url: `PoliticalActors/GetAllPoliticalActors?pageNumber=1&pageSize=10`,
+    queryKey: ["GetAllPoliticalActorsTable"],
+  });
   const [createPoliticalActor, setCreatePoliticalActor] = useState(false);
 
-  const columnHelper = createColumnHelper<MDAType>();
+  const columnHelper = createColumnHelper<any>();
   const columns = [
     // Display Column
     columnHelper.display({
@@ -45,26 +30,26 @@ const PoliticalActors = () => {
         />
       ),
     }),
-    columnHelper.accessor("mdaCode", {
-      header: "MDA Code",
+    columnHelper.accessor("name", {
+      header: "Name",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("ministries", {
-      header: "Ministries",
+    columnHelper.accessor("bio", {
+      header: "Bio",
       cell: (info) => (
         <p className="text-sm font-normal w-[272px] ">{info.getValue()}</p>
       ),
     }),
-    columnHelper.accessor("departments", {
-      header: "Department",
+    columnHelper.accessor("socialMediaLink", {
+      header: "Social Media",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("agencies", {
-      header: "Agencies",
+    columnHelper.accessor("otherInformation", {
+      header: "Other Info",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
@@ -80,7 +65,11 @@ const PoliticalActors = () => {
       <div className="flex justify-end w-full mb-4">
         <AdminButton buttonText="Add Political Actor" onClick={toggleModal} />
       </div>
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={politicalActorsData?.politicalActorViewModel}
+        isLoading={isLoading}
+      />
 
       <Modal show={createPoliticalActor} toggleModal={toggleModal}>
         <div className="p-4">

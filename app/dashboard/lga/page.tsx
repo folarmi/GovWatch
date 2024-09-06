@@ -15,7 +15,7 @@ const LGA = () => {
   const { userCountry } = useAppSelector((state: RootState) => state.auth);
   const { data: lgaData, isLoading } = useGetData({
     url: `/Lgas/GetAllLgas?country=${userCountry}&pageNumber=1&pageSize=10'`,
-    queryKey: ["GetAllRegions"],
+    queryKey: ["GetAllLgas"],
   });
 
   const [createLGAModal, setCreateLGAModal] = useState(false);
