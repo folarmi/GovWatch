@@ -4,7 +4,7 @@ import Table from "@/app/component/Table";
 import { UserType } from "@/app/types/generalTypes";
 import { createColumnHelper } from "@tanstack/react-table";
 import React from "react";
-import defaultAvatar from "../../../public/defaultAvatar.svg";
+import defaultAvatar from "@/public/defaultAvatar.svg";
 import Image from "next/image";
 import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
 import { useForm } from "react-hook-form";
