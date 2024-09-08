@@ -1,10 +1,14 @@
 "use client";
+import Card from "@/app/component/Card";
+import SeeAllPublications from "@/app/component/SeeAllPublications";
+import { cardData } from "@/app/data";
+import withAdminAuth from "@/app/hoc/withAdminAuth";
 import React from "react";
-import SearchBar from "../component/SearchBar";
-import { cardData } from "../data";
-import Card from "../component/Card";
-import SeeAllPublications from "../component/SeeAllPublications";
-import withAdminAuth from "../hoc/withAdminAuth";
+// import SearchBar from "../component/SearchBar";
+// import { cardData } from "../data";
+// import Card from "../component/Card";
+// import SeeAllPublications from "../component/SeeAllPublications";
+// import withAdminAuth from "../hoc/withAdminAuth";
 
 const AdminDashboard = () => {
   const handleSearch = () => {};

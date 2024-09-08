@@ -22,9 +22,10 @@ import CustomInput from "@/app/component/CustomInput";
 import CustomCheckBox from "@/app/component/forms/CustomCheckBox";
 import TagsInput from "@/app/component/forms/TagsInput";
 import CustomTextArea from "@/app/component/CustomTextArea";
-import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const CreatePublication = () => {
+  const router = useRouter();
   const { control, handleSubmit } = useForm();
   const { userCountry, userId } = useAppSelector(
     (state: RootState) => state.auth
@@ -152,9 +153,9 @@ const CreatePublication = () => {
     endpoint: "Publications/CreatePublication",
     successMessage: (data: any) => data?.remark,
     errorMessage: (error: any) => error?.response?.data?.remark,
-    // onSuccessCallback: () => {
-    //  to
-    // },
+    onSuccessCallback: () => {
+      router.refresh();
+    },
   });
 
   const [backendPath, setBackendPath] = useState("");
@@ -176,10 +177,10 @@ const CreatePublication = () => {
   };
 
   const submitForm = (data: any) => {
-    if (backendPath === "") {
-      toast("Please upload a file first");
-      return;
-    }
+    // if (backendPath === "") {
+    //   toast("Please upload a file first");
+    //   return;
+    // }
 
     const formData: any = {
       ...data,
@@ -187,7 +188,8 @@ const CreatePublication = () => {
       isFederal,
       isPromise,
       contributorPublicId: userId,
-      image: backendPath,
+      // image: backendPath,
+      image: "fffff",
       isPromiseFulfilled,
       tags: tags.join(" , "),
       article,
@@ -197,9 +199,10 @@ const CreatePublication = () => {
       mda: "Talon Bell",
       lcda: "Lane Vincent",
       ward: "Aidan Lara",
+      category: "Category One",
       politicalActorName: "Aphrodite Douglas",
     };
-    console.log(data);
+
     createPublicationMutation.mutate(formData);
   };
 
