@@ -1,19 +1,17 @@
 "use client";
 
 import React from "react";
-import { dashboardSideBarItems } from "../data";
+import { dashboardSideBarItems } from "../../data";
 import Image from "next/image";
-import InformationTab from "../component/InformationTab";
-import CreatePublication from "../component/CreatePublication";
-import pending from "../../public/pending.svg";
-import iconSeven from "../../public/iconSeven.svg";
+import InformationTab from "../../component/InformationTab";
+import CreatePublication from "../../component/CreatePublication";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import withAdminAuth from "../hoc/withAdminAuth";
-import { useGetData } from "../hooks/apiCalls";
-import Loader from "../component/Loader";
-import { useAppSelector } from "../lib/hook";
-import { RootState } from "../lib/store";
+import withAdminAuth from "../../hoc/withAdminAuth";
+import { useGetData } from "../../hooks/apiCalls";
+import Loader from "../../component/Loader";
+import { useAppSelector } from "../../lib/hook";
+import { RootState } from "../../lib/store";
 // import SearchBar from "../component/SearchBar";
 
 const AdminDashboardLayout = ({

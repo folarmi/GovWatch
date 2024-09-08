@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { cardData } from "../../data/index";
+import { cardData } from "../../../data/index";
 import Card from "@/app/component/Card";
 import SeeAllPublications from "@/app/component/SeeAllPublications";
 
-const TopEngagedPosts = () => {
+const TotalPublications = () => {
   const handleSearch = () => {};
 
   return (
@@ -32,4 +32,4 @@ const TopEngagedPosts = () => {
   );
 };
 
-export default TopEngagedPosts;
+export default TotalPublications;

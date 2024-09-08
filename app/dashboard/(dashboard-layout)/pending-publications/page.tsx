@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { cardData } from "../../data/index";
 import Card from "@/app/component/Card";
 import SeeAllPublications from "@/app/component/SeeAllPublications";
+import { cardData } from "@/app/data";
 
-const Bookmarks = () => {
+const PendingPublications = () => {
   const handleSearch = () => {};
 
   return (
@@ -32,4 +32,4 @@ const Bookmarks = () => {
   );
 };
 
-export default Bookmarks;
+export default PendingPublications;

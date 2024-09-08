@@ -8,7 +8,6 @@ import CreateCategory from "@/app/component/modals/CreateCategory";
 import Modal from "@/app/component/modals/Modal";
 import { useGetData } from "@/app/hooks/apiCalls";
 import { createColumnHelper } from "@tanstack/react-table";
-import Image from "next/image";
 import React, { useState } from "react";
 
 const Categories = () => {

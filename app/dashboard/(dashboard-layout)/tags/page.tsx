@@ -2,7 +2,6 @@
 
 import AdminButton from "@/app/component/forms/AdminButton";
 import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
-import CreateLCDA from "@/app/component/modals/CreateLCDA";
 import CreateTag from "@/app/component/modals/CreateTag";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";

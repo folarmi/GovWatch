@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { cardData } from "../../data/index";
+import { cardData } from "../../../data/index";
 import Card from "@/app/component/Card";
 import SeeAllPublications from "@/app/component/SeeAllPublications";
 

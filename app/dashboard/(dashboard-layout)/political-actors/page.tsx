@@ -6,7 +6,6 @@ import CreatePoliticalActor from "@/app/component/modals/CreatePoliticalActor";
 import Modal from "@/app/component/modals/Modal";
 import Table from "@/app/component/Table";
 import { useGetData } from "@/app/hooks/apiCalls";
-import { MDAType } from "@/app/types/generalTypes";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
 
