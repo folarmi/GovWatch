@@ -9,18 +9,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CustomButton from "./CustomButton";
-import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { SidebarItemProp } from "../types/generalTypes";
 import { useAppSelector } from "../lib/hook";
 import { RootState } from "../lib/store";
-import { dashboardPath } from "../utils";
+// import { dashboardPath } from "../utils";
 
 const Header = () => {
   const { isAuthenticated, logout } = useAuth();
   const pathName = usePathname();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const { userType } = useAppSelector((state: RootState) => state.auth);
 
@@ -47,7 +46,7 @@ const Header = () => {
     {
       id: 4,
       name: "Dashboard",
-      url: `${dashboardPath(userType)}`,
+      url: `/dashboard`,
     },
     {
       id: 5,

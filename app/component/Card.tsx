@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 import bookMark from "../../public/bookMark.svg";
 import heartOutline from "../../public/heartOutline.svg";
-import coatOfArms from "../../../public/coatOfArms.svg";
 import comments from "../../public/comments.svg";
 import Text from "./Text";
 import { truncateText } from "../utils";
@@ -27,7 +26,7 @@ const Card = ({
   return (
     <div className="max-w-72 bg-white dark:bg-black_100 border border-gray-200 rounded-lg shadow dark:border-black-100 mb-6">
       <div className="p-5">
-        <Image src={imageUrl} alt="dummy image" />
+        <Image src={imageUrl} alt="dummy image" width={600} height={600} />
         <Text
           variant="bodyTwo"
           className="pb-2 tracking-tight text-black_200 dark:text-white"

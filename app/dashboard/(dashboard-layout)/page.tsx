@@ -39,3 +39,14 @@ const AdminDashboard = () => {
 };
 
 export default withAdminAuth(AdminDashboard);
+
+// {
+//   "article": "Deleniti quae eos q",
+//   "submittedBy": "Admin User",
+//   "submittedOn": "09 September 2024",
+//   "image": "fffff",
+//   "imageCaption": "Reiciendis rerum acc",
+//   "id": "6b6c2952-5401-4a78-9e2f-34e139604ac6",
+//   "title": "Corporis ipsam exped",
+//   "isPromise": true
+// },

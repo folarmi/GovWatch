@@ -39,6 +39,7 @@ const CreatePublication = () => {
   const [isPromise, setIsPromise] = useState(false);
   const [isPromiseFulfilled, setIsPromiseFulfilled] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
+  const [isDraft, setIsDraft] = useState(false);
 
   const [isAdditionalInformation, setIsAdditionalInformation] = useState(true);
   const { data: categoriesData, isLoading: isCategoriesLoading } = useGetData({
@@ -193,6 +194,7 @@ const CreatePublication = () => {
       isPromiseFulfilled,
       tags: tags.join(" , "),
       article,
+      isDraft,
       // hardcoded values
       state: "Ethan Spears",
       lga: "Alexander Calderon",
@@ -203,7 +205,8 @@ const CreatePublication = () => {
       politicalActorName: "Aphrodite Douglas",
     };
 
-    createPublicationMutation.mutate(formData);
+    console.log(formData);
+    // createPublicationMutation.mutate(formData);
   };
 
   return (
@@ -410,7 +413,14 @@ const CreatePublication = () => {
 
       {/* Actions */}
       <div className="flex items-center justify-end gap-4 mt-5">
-        <CustomButton className="" variant="secondary">
+        <CustomButton
+          className=""
+          variant="secondary"
+          onClick={() => {
+            setIsDraft(true);
+            submitForm;
+          }}
+        >
           Save to Drafts
         </CustomButton>
         <CustomButton
