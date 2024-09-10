@@ -203,7 +203,6 @@ const CreatePublication = () => {
       politicalActorName: "Aphrodite Douglas",
     };
 
-
     createPublicationMutation.mutate(formData);
   };
 

@@ -21,7 +21,7 @@ const ManageUsers = () => {
     queryKey: ["GetAllUsers"],
   });
 
-  const columnHelper = createColumnHelper<UserType>();
+  const columnHelper = createColumnHelper<any>();
   const columns = [
     // Display Column
     columnHelper.display({
@@ -38,8 +38,14 @@ const ManageUsers = () => {
       id: "actions",
       cell: () => <Image src={defaultAvatar} alt="default avatar" />,
     }),
-    columnHelper.accessor("username", {
-      header: "Username",
+    columnHelper.accessor("firstName", {
+      header: "First Name",
+      cell: (info) => (
+        <span className="text-sm font-normal">{info.getValue()}</span>
+      ),
+    }),
+    columnHelper.accessor("lastName", {
+      header: "Last Name",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
@@ -50,14 +56,8 @@ const ManageUsers = () => {
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
     }),
-    columnHelper.accessor("role", {
-      header: "Role",
-      cell: (info) => (
-        <span className="text-sm font-normal">{info.getValue()}</span>
-      ),
-    }),
-    columnHelper.accessor("post", {
-      header: "Post",
+    columnHelper.accessor("phoneNumber", {
+      header: "Phone Number",
       cell: (info) => (
         <span className="text-sm font-normal">{info.getValue()}</span>
       ),
@@ -76,20 +76,6 @@ const ManageUsers = () => {
         </span>
       ),
     }),
-    columnHelper.accessor("lastLogin", {
-      header: "Last Login",
-      cell: (info) => (
-        <span className="text-sm font-normal">{info.getValue()}</span>
-      ),
-    }),
-  ];
-
-  const options = [
-    { value: "admin", label: "Make Admin" },
-    { value: "user", label: "Make User" },
-    { value: "editor", label: "Make Editor" },
-    { value: "contributor", label: "Make Contributor" },
-    { value: "edit", label: "Edit" },
   ];
 
   return (
