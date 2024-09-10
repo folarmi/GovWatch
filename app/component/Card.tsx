@@ -24,7 +24,7 @@ const Card = ({
   imageUrl,
 }: CardProps) => {
   return (
-    <div className="max-w-72 bg-white dark:bg-black_100 border border-gray-200 rounded-lg shadow dark:border-black-100 mb-6">
+    <div className="max-w-72 bg-white dark:bg-black_100 border border-gray-200 rounded-lg shadow dark:border-black-100 mb-6 cursor-pointer">
       <div className="p-5">
         <Image src={imageUrl} alt="dummy image" width={600} height={600} />
         <Text
@@ -86,3 +86,99 @@ const Card = ({
 };
 
 export default Card;
+
+// using System.ComponentModel.DataAnnotations;
+
+// namespace Core.Models.ViewModels.Publication
+// {
+//     public class CreatePublicationRequestViewModel
+//     {
+// 		/// <summary>
+// 		/// A brief summary of the publication you want to create
+// 		/// </summary>
+// 		[StringLength(1000, ErrorMessage = "Input must not exceed 1000 characters")]
+// 		public string? Snippet { get; set; }
+//         /// <summary>
+//         /// The article Content
+//         /// </summary>
+//         [Required(ErrorMessage = "Please input the article's Content")]
+// 		[StringLength(200000, ErrorMessage = "Input must not exceed 200000 characters")]
+// 		public string Article { get; set; }
+// 		/// <summary>
+// 		/// The Image path of the header Image of the publication you want to create
+// 		/// </summary>
+// 		[StringLength(500, ErrorMessage = "Input must not exceed 200 characters")]
+// 		public string? Image { get; set; }
+// 		/// <summary>
+// 		/// The caption of the header Image of the publication you want to create
+// 		/// </summary>
+// 		[StringLength(200, ErrorMessage = "Input must not exceed 200 characters")]
+// 		public string? ImageCaption { get; set; }
+//         /// <summary>
+//         /// The ID of the person creating the publication
+//         /// </summary>
+//         [Required(ErrorMessage = "Please input userId")]
+//         public string ContributorPublicId { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? Mda { get; set; }
+// 		/// <summary>
+// 		/// The name of the Category that the publication falls under (eg ministry, department, agency, and political actor)
+// 		/// </summary>
+// 		[Required(ErrorMessage = "Please input Category name")]
+//         [StringLength(100, ErrorMessage = "Input must not exceed 100 characters")]
+//         public string Category { get; set; }
+//         /// <summary>
+//         /// The name of the state that the publication relates to the most (eg. Lagos)
+//         /// </summary>
+//         [StringLength(100, ErrorMessage = "Input must not exceed 100 characters")]
+//         public string? State { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? Ward { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? Lcda { get; set; }
+// 		[Required(ErrorMessage = "IsFederal is required")]
+// 		public bool IsFederal { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? Lga { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? Province { get; set; }
+// 		/// <summary>
+// 		/// Title of the publication
+// 		/// </summary>
+// 		[Required(ErrorMessage = "Please input Title of the article name")]
+//         [StringLength(100, ErrorMessage = "Input must not exceed 100 characters")]
+//         public string Title { get; set; }
+// 		/// <summary>
+// 		/// The tags of the publication
+// 		/// </summary>
+// 		[StringLength(200, ErrorMessage = "Input must not exceed 200 characters")]
+// 		public string? Tags { get; set; }
+// 		/// <summary>
+// 		/// If there's a list of references (related to academic research)
+// 		/// </summary>
+// 		[StringLength(20000, ErrorMessage = "Input must not exceed 20000 characters")]
+// 		public string? Reference { get; set; }
+//         /// <summary>
+//         /// Author name is used in cases where you're writing about a book, poem or work of another person so as to make it easier to search for Content particular to the person
+//         /// </summary>
+
+//         [StringLength(100, ErrorMessage = "Input must not exceed 100 characters")]
+//         public string? AuthorName { get; set; }
+// 		/// <summary>
+// 		/// Any special links that need to be added to the publication
+// 		/// </summary>
+// 		[StringLength(100, ErrorMessage = "Input must not exceed 100 characters")]
+// 		public string? Link { get; set; }
+// 		public bool IsPromise { get; set; }
+// 		public bool? IsPromisedFulfilled { get; set; }
+// 		public DateTime? DatePromiseMade { get; set; }
+// 		public DateTime? PromiseDeadline { get; set; }
+// 		public DateTime? DatePromiseFulfilled { get; set; }
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string? PoliticalActorName { get; set; }
+// 		[Required(ErrorMessage = "Country name is required")]
+// 		[StringLength(500, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 2)]
+// 		public string Country { get; set; }
+// 		public CancellationToken CancellationToken { get; set; }
+// 	}
+// }

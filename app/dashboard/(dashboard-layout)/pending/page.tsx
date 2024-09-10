@@ -5,6 +5,7 @@ import Loader from "@/app/component/Loader";
 import { useGetData } from "@/app/hooks/apiCalls";
 import React from "react";
 import coatOfArms from "@/public/coatOfArms.svg";
+import Link from "next/link";
 
 const Pending = () => {
   const {
@@ -23,17 +24,21 @@ const Pending = () => {
           {pendingPublicationsData?.map(
             ({ title, date, image, section, summary, isPromise, id }: any) => {
               return (
-                <div key={id} className="w-full sm:w-1/2 md:w-1/3 mt-10">
+                <Link
+                  href={`/dashboard/pending/${id}`}
+                  key={id}
+                  className="w-full sm:w-1/2 md:w-1/3 mt-10"
+                >
                   <Card
                     section={section}
                     articleTitle={title}
                     summary={summary}
                     date={date}
                     promise={isPromise}
-                    // imageUrl={image}
-                    imageUrl={coatOfArms}
+                    imageUrl={image}
+                    // imageUrl={coatOfArms}
                   />
-                </div>
+                </Link>
               );
             }
           )}

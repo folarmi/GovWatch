@@ -10,52 +10,16 @@ import IndeterminateCheckbox from "@/app/component/InterdeterminateCheckbox";
 import { useForm } from "react-hook-form";
 import AdminButton from "@/app/component/forms/AdminButton";
 import Link from "next/link";
+import { useGetData } from "@/app/hooks/apiCalls";
+import Loader from "@/app/component/Loader";
 
 const ManageUsers = () => {
   const { control } = useForm();
-  // const {
-  //   data: categoriesData,
-  //   isLoading,
-  //   error,
-  // } = useData({
-  //   url: "/GetAllCategories",
-  //   queryKey: ["GetAllCategories"],
-  // });
 
-  const [data, setData] = React.useState<UserType[]>([
-    {
-      username: "Jane Doe",
-      email: "JaneDoeworld@gmail.com",
-      role: "Contributor",
-      post: 50,
-      status: true,
-      lastLogin: "March 14,2024 13:59 PM",
-    },
-    {
-      username: "Jane Doe",
-      email: "JaneDoeworld@gmail.com",
-      role: "Contributor",
-      post: 50,
-      status: false,
-      lastLogin: "March 14,2024 13:59 PM",
-    },
-    {
-      username: "Jane Doe",
-      email: "JaneDoeworld@gmail.com",
-      role: "Contributor",
-      post: 50,
-      status: true,
-      lastLogin: "March 14,2024 13:59 PM",
-    },
-    {
-      username: "Jane Doe",
-      email: "JaneDoeworld@gmail.com",
-      role: "Contributor",
-      post: 50,
-      status: false,
-      lastLogin: "March 14,2024 13:59 PM",
-    },
-  ]);
+  const { data: usersData, isLoading: usersDataIsLoading } = useGetData({
+    url: `Users/GetAllUser?page=1&pageSize=10`,
+    queryKey: ["GetAllUsers"],
+  });
 
   const columnHelper = createColumnHelper<UserType>();
   const columns = [
@@ -129,38 +93,23 @@ const ManageUsers = () => {
   ];
 
   return (
-    <div className="mt-10">
-      <Link
-        href="/admin-dashboard/manage-users/create
+    <>
+      {usersDataIsLoading ? (
+        <Loader />
+      ) : (
+        <div className="mt-10">
+          <Link
+            href="/admin-dashboard/manage-users/create
       "
-        className="flex justify-end w-full mb-4"
-      >
-        <AdminButton buttonText="Add User(s)" />
-      </Link>
-      {/* <section className="flex items-center mb-4 justify-between">
-        <div className="flex py-5 items-center border border-gray-300 rounded-lg overflow-hidden w-80 h-8">
-          <div className="px-3 cursor-pointer">
-            <Image src={filterIcon} alt="filter icon" width={30} height={30} />
-          </div>
-          <input type="text" className="flex-1 px-2 focus:outline-none" />
-        </div>
+            className="flex justify-end w-full mb-4"
+          >
+            <AdminButton buttonText="Add User(s)" />
+          </Link>
 
-        <div className="flex items-center">
-          <CustomSelect
-            name="mySelect"
-            options={options}
-            label="Actions"
-            control={control}
-          />
-
-          <div className="flex items-center ml-4 cursor-pointer">
-            <Image src={trashCan} alt="trash can" className="" />
-            <p>Delete</p>
-          </div>
+          <Table columns={columns} data={usersData?.userViewModel} />
         </div>
-      </section> */}
-      <Table columns={columns} data={data} />
-    </div>
+      )}
+    </>
   );
 };
 

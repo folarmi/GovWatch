@@ -22,10 +22,9 @@ import CustomInput from "@/app/component/CustomInput";
 import CustomCheckBox from "@/app/component/forms/CustomCheckBox";
 import TagsInput from "@/app/component/forms/TagsInput";
 import CustomTextArea from "@/app/component/CustomTextArea";
-import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const CreatePublication = () => {
-  const router = useRouter();
   const { control, handleSubmit } = useForm();
   const { userCountry, userId } = useAppSelector(
     (state: RootState) => state.auth
@@ -155,7 +154,7 @@ const CreatePublication = () => {
     successMessage: (data: any) => data?.remark,
     errorMessage: (error: any) => error?.response?.data?.remark,
     onSuccessCallback: () => {
-      router.refresh();
+      window.location.reload();
     },
   });
 
@@ -178,10 +177,10 @@ const CreatePublication = () => {
   };
 
   const submitForm = (data: any) => {
-    // if (backendPath === "") {
-    //   toast("Please upload a file first");
-    //   return;
-    // }
+    if (backendPath === "") {
+      toast("Please upload a file first");
+      return;
+    }
 
     const formData: any = {
       ...data,
@@ -189,8 +188,7 @@ const CreatePublication = () => {
       isFederal,
       isPromise,
       contributorPublicId: userId,
-      // image: backendPath,
-      image: "fffff",
+      image: backendPath,
       isPromiseFulfilled,
       tags: tags.join(" , "),
       article,
@@ -205,8 +203,8 @@ const CreatePublication = () => {
       politicalActorName: "Aphrodite Douglas",
     };
 
-    console.log(formData);
-    // createPublicationMutation.mutate(formData);
+
+    createPublicationMutation.mutate(formData);
   };
 
   return (
@@ -438,26 +436,3 @@ const CreatePublication = () => {
 };
 
 export default CreatePublication;
-
-// {
-//   "snippet": "Iure velit voluptat",
-//   "image": "http://govwatch.runasp.net/Uploads/76adca8e-4891-48ac-a5ec-7f2824b65e05_Screenshot 2024-08-22 at 03.38.34.png",
-//   "imageCaption": "Vel reprehenderit es",
-//   "contributorPublicId": "a7e36778-2fec-4b6e-8569-dbe47778dff0",
-//   "isFederal": true,
-//   "isPromise": true,
-//   "isPromiseFulfilled": true
-
-//   "title": "Ut quisquam magna ea",
-//   "authorName": "Hedda Merritt",
-//   "category": 2,
-//   "state": "Ethan Spears",
-//   "lga": "Alexander Calderon",
-//   "datePromiseMade": "1987-11-25",
-//   "promisedDeadline": "2024-04-04",
-//   "datePromiseFulfilled": "2019-09-12",
-//   "reference": "Et dignissimos numqu",
-//   "link": "Dolore illum iusto ",
-//   "country": "Nigeria",
-
-// }

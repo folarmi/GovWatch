@@ -41,7 +41,7 @@ const SignIn = () => {
         dispatch(updateUserCountry(data?.data?.country));
         loginFromContext();
 
-        router.push("/dashboard");
+        router.push("/dashboard/manage-users");
         // if (userType === "Admin") {
         //   router.push("/admin-dashboard");
         // } else if (userType === "Editor") {
