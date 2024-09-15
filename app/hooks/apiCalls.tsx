@@ -70,6 +70,20 @@ export const useCountriesData = () => {
   });
 };
 
+export const useStateData = () => {
+  return useQuery<any>({
+    queryKey: ["getStateData"],
+    queryFn: async () => {
+      const response = await api.get("States/GetState");
+      return response?.data;
+    },
+    retry: false,
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
+    staleTime: 0,
+  });
+};
+
 export const useGetData = ({ url, queryKey, enabled }: UseDataOptions) => {
   return useQuery<any>({
     queryKey,

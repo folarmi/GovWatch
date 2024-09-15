@@ -100,7 +100,7 @@ const SignIn = () => {
           />
 
           <Link href="/forgotPassword">
-            <p className="font-bold text-sm ml-72 pb-3">Forgot Password?</p>
+            <p className="font-bold text-sm lg:ml-72 ml-64 pb-3">Forgot Password?</p>
           </Link>
 
           <CustomButton
